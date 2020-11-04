@@ -8,18 +8,13 @@ namespace CSharpAdvanced
         {
             var books = new BookRepository().GetBooks();
 
-            var cheapBooks = books.FindAll(IsCheaperThan10Dollars);
+            // lambda operator.
+            var cheapBooks = books.FindAll(b => b.Price < 10);
 
             foreach (Book book in cheapBooks)
             {
                 Console.WriteLine(book.Title);
             }
-        }
-
-        // Predicate example
-        static bool IsCheaperThan10Dollars(Book book)
-        {
-            return book.Price < 10;
         }
     }
 }
