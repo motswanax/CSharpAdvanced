@@ -7,10 +7,10 @@ namespace CSharpAdvanced
         // Delegate allows program to be extensible.
         public delegate void PhotoFilterHandler(Photo photo);
 
-        public void Process(string path, PhotoFilterHandler filterHandler)
+        public void Process(string path, Action<Photo> filterHandler)
         {
-            // System.Action<>
-            // System.Func<>
+            // System.Action<> points to a method that returns a void
+            // System.Func<> points to a method that returns a value
 
             var photo = Photo.Load(path);
 
