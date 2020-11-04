@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace CSharpAdvanced
 {
@@ -6,7 +7,14 @@ namespace CSharpAdvanced
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var book = new Book("1111", "C# Advanced");
+
+            var numbers = new GenericList<Book>();
+            numbers.Add(new Book());
+
+
+            var dictionary = new GenericDictionary<string, Book>();
+            dictionary.Add("1234", new Book());
         }
     }
 }
