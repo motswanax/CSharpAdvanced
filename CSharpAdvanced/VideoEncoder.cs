@@ -15,9 +15,11 @@ namespace CSharpAdvanced
         // 2. Define an event based on that delegate.
         // 3. Raise the event.
 
-        public delegate void VideoEncoderEventHandler(object source, VideoEventArgs args);
-        public event VideoEncoderEventHandler VideoEncoded;
 
+        // EventHandler - normal form (no sending data)
+        // EventHandler<TEventArgs> generic form (sending data)
+
+        public event EventHandler<VideoEventArgs> VideoEncoded;
 
         public void Encode(Video video)
         {
