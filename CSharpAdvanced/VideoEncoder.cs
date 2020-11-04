@@ -3,6 +3,10 @@ using System.Threading;
 
 namespace CSharpAdvanced
 {
+    public class VideoEventArgs : EventArgs
+    {
+        public Video Video { get; set; }
+    }
     /* This is the event publisher. */
     class VideoEncoder
     {
@@ -11,7 +15,7 @@ namespace CSharpAdvanced
         // 2. Define an event based on that delegate.
         // 3. Raise the event.
 
-        public delegate void VideoEncoderEventHandler(object source, EventArgs args);
+        public delegate void VideoEncoderEventHandler(object source, VideoEventArgs args);
         public event VideoEncoderEventHandler VideoEncoded;
 
 
@@ -20,15 +24,15 @@ namespace CSharpAdvanced
             Console.WriteLine("Encoding vidoes...");
             Thread.Sleep(3000);
 
-            OnVideoEncoded();
+            OnVideoEncoded(video);
         }
 
         /* By convention, event publisher methods should be protected, virtual and void; 
          * start with 'On' then name of event. */
-        protected virtual void OnVideoEncoded()
+        protected virtual void OnVideoEncoded(Video video)
         {
             if (VideoEncoded != null)
-                VideoEncoded(this, EventArgs.Empty);
+                VideoEncoded(this, new VideoEventArgs { Video = video });
         }
     }
 }

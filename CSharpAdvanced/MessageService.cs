@@ -4,9 +4,9 @@ namespace CSharpAdvanced
 {
     public class MessageService
     {
-        public void OnVideoEncoded(object source, EventArgs args)
+        public void OnVideoEncoded(object source, VideoEventArgs args)
         {
-            Console.WriteLine("Sending a text message... ");
+            Console.WriteLine("Sending a text message... " + args.Video.Title);
         }
     }
 }
