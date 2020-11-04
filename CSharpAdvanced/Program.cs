@@ -6,24 +6,20 @@ namespace CSharpAdvanced
     {
         static void Main(string[] args)
         {
-            // args => expression
-            // number => number * number;
-            // () => ... [no arguments]
-            // x => ... [one argument]
-            // (x, y, z) => ... [multiple arguments]
-            Func<int, int> square = number => number * number;
-            Console.WriteLine(square(5));
+            var books = new BookRepository().GetBooks();
 
-            const int factor = 5;
-            Func<int, int> multiplier = n => n * factor;
-            var result = multiplier(10);
-            Console.WriteLine(result);
+            var cheapBooks = books.FindAll(IsCheaperThan10Dollars);
+
+            foreach (Book book in cheapBooks)
+            {
+                Console.WriteLine(book.Title);
+            }
         }
 
-        // Method without lambdas
-        static int Square(int number)
+        // Predicate example
+        static bool IsCheaperThan10Dollars(Book book)
         {
-            return number * number;
+            return book.Price < 10;
         }
     }
 }
