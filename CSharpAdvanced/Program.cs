@@ -6,7 +6,10 @@ namespace CSharpAdvanced
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            string post = "This is a very long blog post... yada yada yada";
+            var shortenedPost = post.Shorten(5);
+
+            Console.WriteLine(shortenedPost);
         }
     }
 }
